@@ -19,7 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saI-Xy-9yY"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saI-Xy-9yY">
+                                <color key="backgroundColor" red="0.98042868589743593" green="0.93521448613169722" blue="0.96378738415282339" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zev-U8-9bx">
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="al9-xK-kKs"/>
@@ -44,10 +46,13 @@
                                 <color key="textColor" red="1" green="0.97592526087025677" blue="0.95259836126735842" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="OyV-HC-SgY"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G33-j9-1gC">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="131" id="gqA-pZ-1RV"/>
+                                    <constraint firstAttribute="width" constant="150" id="gqA-pZ-1RV"/>
                                 </constraints>
                                 <color key="textColor" red="0.96276492163014582" green="1" blue="0.97479156030690917" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>

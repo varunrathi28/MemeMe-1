@@ -40,15 +40,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memeTextAttributes = [
             NSStrokeColorAttributeName :UIColor.black,  //TODO: Fill in appropriate UIColor,
             NSForegroundColorAttributeName :UIColor.white , //TODO: Fill in UIColor,
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName :5.0 //TODO: Fill in appropriate Float
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 42)!,
+            NSStrokeWidthAttributeName :-5.0 //TODO: Fill in appropriate Float
         ] as [String : Any]
         
+       
         tfTop.defaultTextAttributes = memeTextAttributes
-
-        tfTop.backgroundColor=UIColor.clear
-        
-        tfBottom.defaultTextAttributes = memeTextAttributes
+       tfBottom.defaultTextAttributes = memeTextAttributes
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -108,7 +106,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             imgView.image=image;
             
         }
-        picker .dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -119,14 +117,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func saveImage()
     {
+        self.navigationController?.isNavigationBarHidden = true // hide the nav bar
+        self.navigationController?.isToolbarHidden = true   // to hide toolbar so that it isnt shown in saved image
         let memedCreatedImg:UIImage = createMemedImage()
         
-        _ = Meme(headerText: tfTop.text, footerText: tfBottom.text, originalImage: imgView.image, memedImage: memedCreatedImg)
+        var aMeme = Meme(headerText: tfTop.text, footerText: tfBottom.text, originalImage: imgView.image, memedImage: memedCreatedImg)
+         self.navigationController?.isToolbarHidden = false // retrieve back the toolbar
+        self.navigationController?.isNavigationBarHidden = true // show back nav bar
     }
     
     func createMemedImage()->UIImage
     {
-        
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame,
@@ -192,8 +193,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        textField.textColor=UIColor.white
         return true
     }
     
@@ -201,6 +200,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.resignFirstResponder()
         return true
     }
+    
     
     
     func showActivityView()
